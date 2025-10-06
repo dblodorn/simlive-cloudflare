@@ -125,6 +125,6 @@ This repo includes a **Deploy to DO** button. It sets up a **Worker** on App Pla
 
 > **Note:** Update the link below with your actual repo path (owner/name/branch) when you publish to GitHub.
 
-[![Deploy to DO](https://www.deploytodo.com/do-btn-blue.svg)](https://cloud.digitalocean.com/apps/new?repo=https://github.com/REPO-OWNER/REPO-NAME/tree/main)
+[![Deploy to DO](https://www.deploytodo.com/do-btn-blue.svg)](https://cloud.digitalocean.com/apps/new?repo=https://github.com/dblodorn/simlive-cloudflare/tree/main)
 
 References: App Platform storage is ephemeral and does not support persistent volumes; use Spaces or another remote source for media.
