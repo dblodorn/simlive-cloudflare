@@ -1,0 +1,7 @@
+
+.vscode/
+.idea/
+.env
+videos/
+*.log
+.DS_Store

@@ -1,0 +1,25 @@
+
+version: "3.8"
+services:
+  simlive:
+    build: .
+    container_name: simlive
+    restart: always
+    environment:
+      SRC_DIR: /videos
+      CF_PROTOCOL: rtmps
+      CF_HOST: live.cloudflare.com
+      CF_PORT: 443
+      CF_PATH: /live
+      CF_STREAM_KEY: ${CF_STREAM_KEY}
+      VIDEO_BITRATE: ${VIDEO_BITRATE:-4500k}
+      AUDIO_BITRATE: ${AUDIO_BITRATE:-160k}
+      GOP_SIZE: ${GOP_SIZE:-60}
+      FRAMERATE: ${FRAMERATE:-30}
+    volumes:
+      - ./videos:/videos:ro
+    healthcheck:
+      test: ["CMD", "pidof", "ffmpeg"]
+      interval: 30s
+      timeout: 5s
+      retries: 5

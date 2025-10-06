@@ -1,0 +1,18 @@
+
+spec:
+  name: simlive-cloudflare
+  workers:
+    - name: channel
+      dockerfile_path: ./Dockerfile
+      source_dir: /
+      run_command: "/usr/local/bin/simlive.sh"
+      instance_count: 1
+      instance_size_slug: basic-xxs
+      envs:
+        - key: CF_STREAM_KEY
+          scope: RUN_TIME
+          type: SECRET
+          value: "REPLACE_WITH_YOUR_CF_STREAM_KEY"
+        - key: REMOTE_PLAYLIST_URL
+          scope: RUN_TIME
+          value: "https://REPLACE_WITH_PUBLIC_PLAYLIST_URL"  # optional; see README

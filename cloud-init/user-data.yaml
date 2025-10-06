@@ -1,0 +1,14 @@
+
+#cloud-config
+package_update: true
+packages:
+  - git
+runcmd:
+  - mkdir -p /mnt/videos
+  - git clone https://REPLACE_WITH_YOUR_REPO_URL /opt/simlive || true
+  - cd /opt/simlive
+  - cp .env.example .env
+  - sed -i 's#YOUR_CLOUDFLARE_LIVE_INPUT_KEY#REPLACE_WITH_YOUR_KEY#g' .env
+  - sed -i 's#./videos:/videos:ro#/mnt/videos:/videos:ro#' docker-compose.yml || true
+  - docker compose up -d --build
+output: { all: '| tee -a /var/log/cloud-init-output.log' }
